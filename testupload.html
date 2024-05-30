@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Upload File</title>
+</head>
+
+<body>
+    <form id="form">
+        <p>Click on the "Choose File" button to upload a file:</p>
+
+        <form action="/action_page.php">
+            <input type="file" id="myFile" name="filename">
+            <input type="submit">
+        </form>
+
+        <p id="caps">Caps Lock is on!</p>
+    </form>
+</body>
+<script>
+    var input = document.getElementById(form);
+
+    var text = document.getElementById(caps);
+
+    input.addEventListener("keyup", function (event) {
+
+        // If "caps lock" is pressed, display the warning text
+        if (event.getModifierState("CapsLock")) {
+            text.style.display = "block";
+        } else {
+            text.style.display = "none"
+        }
+    });
+</script>
+
+</html>
