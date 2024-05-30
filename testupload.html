@@ -3,19 +3,26 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Upload File</title>
+    <title>upload test</title>
 </head>
 
 <body>
-    <p>Click on the "Choose File" button to upload a file:</p>
+    <p>firebase upload test</p>
 
     <form action="/action_page.php">
         <input type="file" id="myFile" name="filename">
         <input type="submit">
     </form>
+
+    <img
+        src="https://firebasestorage.googleapis.com/v0/b/thesissandbox.appspot.com/o/important%20image.png?alt=media&token=5f8c8f4a-6adf-4bd4-900f-fbbd685d7361">
+
 </body>
 <script src="firebase.js" type="module">
-    var storage = firebase.app().storage("gs://my-custom-bucket");
+    import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"
+
+    
+
 </script>
 
 </html>
