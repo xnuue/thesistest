@@ -7,31 +7,15 @@
 </head>
 
 <body>
-    <form id="form">
-        <p>Click on the "Choose File" button to upload a file:</p>
+    <p>Click on the "Choose File" button to upload a file:</p>
 
-        <form action="/action_page.php">
-            <input type="file" id="myFile" name="filename">
-            <input type="submit">
-        </form>
-
-        <p id="caps">Caps Lock is on!</p>
+    <form action="/action_page.php">
+        <input type="file" id="myFile" name="filename">
+        <input type="submit">
     </form>
 </body>
-<script>
-    var input = document.getElementById(form);
-
-    var text = document.getElementById(caps);
-
-    input.addEventListener("keyup", function (event) {
-
-        // If "caps lock" is pressed, display the warning text
-        if (event.getModifierState("CapsLock")) {
-            text.style.display = "block";
-        } else {
-            text.style.display = "none"
-        }
-    });
+<script src="firebase.js" type="module">
+    var storage = firebase.app().storage("gs://my-custom-bucket");
 </script>
 
 </html>
