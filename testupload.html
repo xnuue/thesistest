@@ -12,8 +12,7 @@
         <progress id="uploader" value="0" max="100">0%</progress>
         <input type="file" id="fileButton" value="upload" />
     </div>
-    
-    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+
     <script>
         // Initialize Firebase
         var config = {
@@ -27,7 +26,7 @@
         };
         firebase.initializeApp(config);
         //-------------------------------------
-
+        console.log(UserCreds)
         var uploader = document.getElementById('uploader');
         var fileButton = document.getElementById('fileButton');
         fileButton.addEventListener('change', function (e) {
@@ -39,7 +38,6 @@
                 uploader.value = percentage;
 
             }, function error(err) {
-
 
             }, function complete() {
 
