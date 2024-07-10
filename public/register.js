@@ -32,9 +32,7 @@ let RegisterUser = evt => {
   evt.preventDefault();
   createUserWithEmailAndPassword(auth, em.value, pass.value, sn.value)
     .then(async (credentials) => {
-      // Send email verification
       await sendEmailVerification(auth.currentUser);
-      // Store user data in Firestore
       var ref = doc(db, "UserAuthList", credentials.user.uid);
       await setDoc(ref, {
         name: name.value,

@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="new-password" class="form-control" placeholder="Password" id="pw">
+            <input type="password" class="form-control" placeholder="Password" id="pw">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -81,7 +81,17 @@
   </div><!-- /.card -->
   </div>
   <!-- /.register-box -->
+  <script>
+    const passwordInput = document.getElementById('pw');
 
+    passwordInput.addEventListener('focus', () => {
+      passwordInput.type = 'text';
+    });
+
+    passwordInput.addEventListener('blur', () => {
+      passwordInput.type = 'password';
+    });
+  </script>
   <!-- firebase aahhahahaha -->
   <script src="register.js" type="module">
   </script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forgotten Password | Academic Commission Booking System</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="AdminLTE-3.2.0/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      Forgot Password?
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Please enter your email</p>
+
+        <form id="form" method="post">
+          <div class="input-group mb-3">
+            <input type="username" class="form-control" placeholder="Email" id="email" autocomplete="email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-at"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+              <button type="submit" class="btn btn-primary btn-block">Send</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+      </div>
+      <center>
+        <div class="social-auth-links text-center mt-2 mb-3 col-7">
+          <p>or</p>
+          <a href="login.html" class="btn btn-block btn-primary">
+            Return to Login
+          </a>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDbz7EftWFT2NC5bE9LXjHrUuBmgtOW9wI",
+      authDomain: "bookingsystem-93805.firebaseapp.com",
+      databaseURL: "https://bookingsystem-93805-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "bookingsystem-93805",
+      storageBucket: "bookingsystem-93805.appspot.com",
+      messagingSenderId: "84951345551",
+      appId: "1:84951345551:web:f808f51f7b37a644ff83fa",
+      measurementId: "G-34Z8ED88VY"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    let em = document.getElementById('email');
+    let MainForm = document.getElementById('form');
+
+    MainForm.addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent default form submission
+
+      ForgotPassword();
+    });
+
+    let ForgotPassword = () => {
+      sendPasswordResetEmail(auth, em.value)
+        .then(() => {
+          alert("The password reset link has been sent to your Email!");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          console.log(error.code);
+          console.log(error.message);
+          alert("An error occurred. Please try again."); // Provide user feedback
+        });
+    };
+  </script>
+</body>
+
+</html>
