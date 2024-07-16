@@ -85,7 +85,7 @@
     let MainForm = document.getElementById('form');
 
     MainForm.addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent default form submission
+      event.preventDefault(); 
 
       ForgotPassword();
     });
@@ -99,7 +99,7 @@
         .catch((error) => {
           console.log(error.code);
           console.log(error.message);
-          alert("An error occurred. Please try again."); // Provide user feedback
+          alert("An error occurred. Please try again."); 
         });
     };
   </script>
