@@ -12,7 +12,6 @@ let signout = () => {
 }
 
 let check = () => {
-  // Check email verification within UserCreds (assuming "emailVerified" exists)
   if (UserCreds && !UserCreds.emailVerified) {
     alert("Please verify your email before logging in.")
     sessionStorage.removeItem("user-creds");
@@ -20,9 +19,8 @@ let check = () => {
     window.location.href = 'login.html';
 
   } else {
-    // Existing code to display user information (optional)
-    console.log("written with blood tears and sweat");  // (Optional)
-    console.log("https://facebook.com/senn2k");        // (Optional)  
+    console.log("written with blood tears and sweat");
+    console.log("https://facebook.com/senn2k");
   }
   console.log(UserCreds)
     who.innerText = `${UserCreds.name}`;
