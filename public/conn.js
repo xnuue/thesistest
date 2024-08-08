@@ -1,5 +1,5 @@
 let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
+let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
 let who = document.getElementById('whoami');
 let so = document.getElementById('signout');

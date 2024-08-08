@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="AdminLTE-3.2.0/dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="sidebar-mini control-sidebar-slide-close">
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
@@ -30,26 +30,26 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
-        <li class="nav-item">
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+            <i class="fas fa-cog"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <div class="dropdown-item">
+                <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                  <label class="custom-control-label" for="customSwitch1">Dark Mode</label>
                 </div>
               </div>
-            </form>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" type="submit" role="button" id="signout">Logout</a>
+            <div class="dropdown-divider"></div>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" type="submit" role="button" id="signout">Logout</a>
         </li>
       </ul>
     </nav>
@@ -62,15 +62,7 @@
         <span class="brand-text font-weight-light"><b>TCU UniArch</b></span>
       </a>
 
-      <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="info" id="whoami">
-            <h5>Client</h5>
-          </div>
-        </div>
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -98,7 +90,15 @@
               <a href="services.html" class="nav-link">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
-                  Services
+                  Favorites
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="services.html" class="nav-link">
+                <i class="nav-icon fas fa-columns"></i>
+                <p>
+                  Chatbot
                 </p>
               </a>
             </li>
@@ -115,7 +115,6 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0" id="welcome">Welcome!</h1>
             </div>
             <!-- /.col -->
             <div class="col-sm-6">
@@ -125,13 +124,56 @@
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
-          <form class="cardz">
-            <center>
-              <h4>isubo ang titi mo sagad hanggang lungs</h4>
-            </center>
-            <div class="row">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Recommended for You</h3>
             </div>
-            <!-- /.card -->
+            <!-- /.card-header -->
+            <!-- form start -->
+            <form>
+              <div class="card-body">
+                <h2 align="center">todo: content carousel</h2>
+              </div>
+              <!-- /.card-body -->
+            </form>
+          </div>
+          <section class="body">
+            <div class="row">
+              <!-- Left column -->
+              <div class="col-md-6">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Upcoming Events</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form>
+                    <div class="card-body">
+                      <h2 align="center">todo: event pane</h2>
+                    </div>
+                    <!-- /.card-body -->
+                  </form>
+                </div>
+              </div>
+
+              <!-- Right column -->
+              <div class="col-md-6">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Recents</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form>
+                    <div class="card-body">
+                      <h2 align="center">todo: recents</h2>
+                    </div>
+                    <!-- /.card-body -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         </form>
       </div><!-- /.container-fluid -->
@@ -146,6 +188,15 @@
     </aside>
     <!-- /.control-sidebar -->
 
+
+    <!-- jQuery -->
+    <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>

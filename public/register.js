@@ -17,6 +17,7 @@ const firebaseConfig = {
   appId: "1:219383246422:web:137c8b5cf599e6734dd5f7",
   measurementId: "G-DPPCXVN3HD"
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
@@ -25,28 +26,33 @@ const auth = getAuth(app);
 let name = document.getElementById('fname');
 let pass = document.getElementById('pw');
 let em = document.getElementById('email');
-let sn = document.getElementById('studentnum')
+let sn = document.getElementById('studentnum'); // Change this to store Student ID directly
 let MainForm = document.getElementById('reg');
 
 let RegisterUser = evt => {
   evt.preventDefault();
-  createUserWithEmailAndPassword(auth, em.value, pass.value, sn.value)
+
+  // Create the user with email and password
+  createUserWithEmailAndPassword(auth, em.value, pass.value)
     .then(async (credentials) => {
-      await sendEmailVerification(auth.currentUser);
+      await sendEmailVerification(auth.currentUser); // Send verification email
+
+      // Store user information in Firestore
       var ref = doc(db, "UserAuthList", credentials.user.uid);
       await setDoc(ref, {
         name: name.value,
         email: em.value,
-        sn: sn.value + "@stu.edu"
+        studentID: sn.value // Store the student ID here
       });
+
       alert("Account created! Please verify your email before logging in. Check your inbox or spam folder.");
-      window.location.href = "login.html";
+      window.location.href = "login.html"; // Redirect to login page
     })
     .catch((error) => {
       alert(error.message);
       console.error(error.code);
       console.error(error.message);
-    })
+    });
 }
 
 MainForm.addEventListener('submit', RegisterUser);
