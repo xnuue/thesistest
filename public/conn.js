@@ -7,8 +7,8 @@ let wc = document.getElementById('welcome');
 
 let signout = () => {
   sessionStorage.removeItem("user-creds");
-  sessionStorage.removeItem("user-info");
-  window.location.href = 'login.html'
+  sessionStorage.removeItem("user-info, studentID");
+  window.location.href = 'index.html'
 }
 
 let check = () => {
@@ -16,15 +16,14 @@ let check = () => {
     alert("Please verify your email before logging in.")
     sessionStorage.removeItem("user-creds");
     sessionStorage.removeItem("user-info");
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 
   } else {
-    console.log("written with blood tears and sweat");
-    console.log("https://facebook.com/senn2k");
+    console.log('User Info:', UserInfo);
+    console.log('User Creds:', UserCreds);
   }
-  console.log(UserCreds)
-    who.innerText = `${UserCreds.name}`;
-    wc.innerText = `Welcome ${UserCreds.name}!`;
+  document.getElementById('name').textContent = UserInfo.name;
+  document.getElementById('sn').textContent = UserInfo.sn;
 };
 window.addEventListener('load', check);
 so.addEventListener('click', signout);

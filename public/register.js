@@ -18,7 +18,6 @@ const firebaseConfig = {
   measurementId: "G-DPPCXVN3HD"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 const auth = getAuth(app);
@@ -26,27 +25,25 @@ const auth = getAuth(app);
 let name = document.getElementById('fname');
 let pass = document.getElementById('pw');
 let em = document.getElementById('email');
-let sn = document.getElementById('studentnum'); // Change this to store Student ID directly
+let sn = document.getElementById('studentnum'); 
 let MainForm = document.getElementById('reg');
 
 let RegisterUser = evt => {
   evt.preventDefault();
 
-  // Create the user with email and password
   createUserWithEmailAndPassword(auth, em.value, pass.value)
     .then(async (credentials) => {
-      await sendEmailVerification(auth.currentUser); // Send verification email
-
-      // Store user information in Firestore
+      await sendEmailVerification(auth.currentUser); 
+      
       var ref = doc(db, "UserAuthList", credentials.user.uid);
       await setDoc(ref, {
         name: name.value,
         email: em.value,
-        studentID: sn.value // Store the student ID here
+        studentID: sn.value 
       });
 
       alert("Account created! Please verify your email before logging in. Check your inbox or spam folder.");
-      window.location.href = "login.html"; // Redirect to login page
+      window.location.href = "login.html"; 
     })
     .catch((error) => {
       alert(error.message);

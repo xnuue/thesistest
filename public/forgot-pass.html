@@ -49,7 +49,7 @@
       <center>
         <div class="social-auth-links text-center mt-2 mb-3 col-7">
           <p>or</p>
-          <a href="login.html" class="btn btn-block btn-primary">
+          <a href="index.html" class="btn btn-block btn-primary">
             Return to Login
           </a>
         </div>
@@ -67,14 +67,13 @@
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyDbz7EftWFT2NC5bE9LXjHrUuBmgtOW9wI",
-      authDomain: "bookingsystem-93805.firebaseapp.com",
-      databaseURL: "https://bookingsystem-93805-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "bookingsystem-93805",
-      storageBucket: "bookingsystem-93805.appspot.com",
-      messagingSenderId: "84951345551",
-      appId: "1:84951345551:web:f808f51f7b37a644ff83fa",
-      measurementId: "G-34Z8ED88VY"
+      apiKey: "AIzaSyCo7nh58UwLmF5w6XPc4erpJgHE2fD1-pE",
+      authDomain: "thesissandbox.firebaseapp.com",
+      projectId: "thesissandbox",
+      storageBucket: "thesissandbox.appspot.com",
+      messagingSenderId: "219383246422",
+      appId: "1:219383246422:web:137c8b5cf599e6734dd5f7",
+      measurementId: "G-DPPCXVN3HD"
     };
 
     // Initialize Firebase
@@ -85,7 +84,7 @@
     let MainForm = document.getElementById('form');
 
     MainForm.addEventListener('submit', function (event) {
-      event.preventDefault(); 
+      event.preventDefault();
 
       ForgotPassword();
     });
@@ -94,12 +93,12 @@
       sendPasswordResetEmail(auth, em.value)
         .then(() => {
           alert("The password reset link has been sent to your Email!");
-          window.location.href = "login.html";
+          window.location.href = "index.html";
         })
         .catch((error) => {
           console.log(error.code);
           console.log(error.message);
-          alert("An error occurred. Please try again."); 
+          alert("An error occurred. Please try again.");
         });
     };
   </script>
