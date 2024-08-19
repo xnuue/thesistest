@@ -25,5 +25,9 @@ let check = () => {
   document.getElementById('name').textContent = UserInfo.name;
   document.getElementById('sn').textContent = UserInfo.sn;
 };
+
+if (!UserCreds || !UserInfo) {
+  window.location.href = "index.html";
+}
 window.addEventListener('load', check);
 so.addEventListener('click', signout);
