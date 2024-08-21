@@ -41,7 +41,6 @@ let RegisterUser = evt => {
         email: em.value,
         studentID: sn.value 
       });
-
       alert("Account created! Please verify your email before logging in. Check your inbox or spam folder.");
       window.location.href = "login.html"; 
     })
@@ -52,4 +51,4 @@ let RegisterUser = evt => {
     });
 }
 
-MainForm.addEventListener('submit', RegisterUser);
+MainForm.addEventListener('submit', RegisterUser);  
