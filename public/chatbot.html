@@ -87,7 +87,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <a href="favorites.html" class="nav-link">
                                 <i class="nav-icon fas fa-heart"></i>
                                 <p>
                                     Favorites
@@ -95,7 +95,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="chatbot.html" class="nav-link">
+                            <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-comments"></i>
                                 <p>
                                     Chatbot
@@ -120,42 +120,94 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-                                <li class="breadcrumb-item active">Favorites</li>
+                                <li class="breadcrumb-item active">Chatbot</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
-                    <div class="card card-primary" style="height: 100vh;">
-                        <div class="card-header">
-                            <h1 class="card-title">Favorites</h1>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form>
+                </div>
+                <form id="chatbot">
+                    <div class="card card-primary">
+                        <!-- DIRECT CHAT WARNING -->
+                        <div class="card card-primary direct-chat direct-chat-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Chatbot</h3>
+                            </div>
+                            <!-- /.card-header -->
                             <div class="card-body">
-                                <h4>todo: favorites pane</h4>
+                                <!-- Conversations are loaded here -->
+                                <div class="direct-chat-messages">
+                                    <!-- Message. Default to the left -->
+                                    <div class="direct-chat-msg">
+                                        <div class="direct-chat-infos clearfix">
+                                            <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                            <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                                        </div>
+                                        <!-- /.direct-chat-infos -->
+                                        <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg"
+                                            alt="Message User Image">
+                                        <!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            Is this template really for free? That's unbelievable!
+                                        </div>
+                                        <!-- /.direct-chat-text -->
+                                    </div>
+                                    <!-- /.direct-chat-msg -->
+
+                                    <!-- Message to the right -->
+                                    <div class="direct-chat-msg right">
+                                        <div class="direct-chat-infos clearfix">
+                                            <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                            <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                                        </div>
+                                        <!-- /.direct-chat-infos -->
+                                        <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg"
+                                            alt="Message User Image">
+                                        <!-- /.direct-chat-img -->
+                                        <div class="direct-chat-text">
+                                            You better believe it!
+                                        </div>
+                                        <!-- /.direct-chat-text -->
+                                    </div>
+                                    <!-- /.direct-chat-msg -->
+                                </div>
+                                <!--/.direct-chat-messages-->
+                                <!-- /.direct-chat-pane -->
                             </div>
                             <!-- /.card-body -->
-                        </form>
+                            <div class="card-footer">
+                                <form action="#" method="post">
+                                    <div class="input-group">
+                                        <input type="text" name="message" placeholder="Type here!"
+                                            class="form-control">
+                                        <span class="input-group-append">
+                                            <button type="submit" class="btn btn-primary">Send</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.card-footer-->
+                        </div>
+                        <!--/.direct-chat -->
                     </div>
-                </div>
                 </form>
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-        <script src="conn.js"></script>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
-        <!-- jQuery -->
-        <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- bs-custom-file-input -->
-        <script src="AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+            </div>
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <script src="conn.js"></script>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- jQuery -->
+    <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>
