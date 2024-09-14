@@ -7,7 +7,7 @@ let wc = document.getElementById('welcome');
 
 let signout = () => {
   sessionStorage.removeItem("user-creds");
-  sessionStorage.removeItem("user-info, studentID");
+  sessionStorage.removeItem("user-info, studentID, isDark");
   window.location.href = 'index.html'
 }
 

@@ -42,7 +42,7 @@ let RegisterUser = evt => {
         studentID: sn.value 
       });
       alert("Account created! Please verify your email before logging in. Check your inbox or spam folder.");
-      window.location.href = "login.html"; 
+      window.location.href = "index.html"; 
     })
     .catch((error) => {
       alert(error.message);

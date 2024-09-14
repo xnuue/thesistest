@@ -9,7 +9,7 @@ const firebaseConfig = {
     authDomain: "thesissandbox.firebaseapp.com",
     projectId: "thesissandbox",
     storageBucket: "thesissandbox.appspot.com",
-    messagingSenderId: "219383246422",
+    messagingSenderId: "219383246422",  
     appId: "1:219383246422:web:137c8b5cf599e6734dd5f7",
     measurementId: "G-DPPCXVN3HD"
 };
@@ -25,14 +25,12 @@ let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 console.log('User Info:', UserInfo);
 console.log('User Creds:', UserCreds);
 
-// Update the HTML element with the user's name
 if (UserInfo && UserInfo.name) {
     document.getElementById('name').textContent = UserInfo.name;
 } else {
     console.log('User name not found in session storage.');
 }
 
-// Set up event listeners
 const uploader = document.getElementById('uploader');
 const fileButton = document.getElementById('fileButton');
 const signoutButton = document.getElementById('signout');
@@ -66,6 +64,6 @@ signoutButton.addEventListener('click', () => {
         sessionStorage.removeItem("user-info");
         window.location.href = 'login.html';
     }).catch((error) => {
-        console.error('Sign out failed:', error);
+        console.error('Signing out failed:', error);
     });
 });
