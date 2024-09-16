@@ -23,7 +23,7 @@ let check = () => {
 
     document.getElementById('name').textContent = UserInfo.name;
     document.getElementById('sn').textContent = UserInfo.sn;
-
+    console.log("tite");
     if (UserInfo.isDark !== undefined) {
       if (UserInfo.isDark === 1) {
         document.body.classList.add('dark-mode');
@@ -33,7 +33,7 @@ let check = () => {
         console.log('light');
       }
     }
-  }
+  }  
 };
 
 if (!UserCreds || !UserInfo) {
