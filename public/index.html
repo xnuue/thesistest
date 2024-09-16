@@ -145,6 +145,7 @@
             sessionStorage.setItem("user-info", JSON.stringify({
               name: docSnap.data().name,
               sn: docSnap.data().studentID,
+              isDark: docSnap.data().isDark,
             }));
             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
             window.location.href = "dashboard.html";
