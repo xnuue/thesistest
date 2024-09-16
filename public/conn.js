@@ -5,6 +5,7 @@ let who = document.getElementById('whoami');
 let so = document.getElementById('signout');
 let wc = document.getElementById('welcome');
 
+
 let signout = () => {
   sessionStorage.removeItem("user-creds");
   sessionStorage.removeItem("user-info");
@@ -20,20 +21,14 @@ let check = () => {
   } else {
     console.log('User Info:', UserInfo);
     console.log('User Creds:', UserCreds);
-
     document.getElementById('name').textContent = UserInfo.name;
     document.getElementById('sn').textContent = UserInfo.sn;
-    console.log("tite");
+    console.log('tite');
     if (UserInfo.isDark !== undefined) {
-      if (UserInfo.isDark === 1) {
-        document.body.classList.add('dark-mode');
-        console.log('dark');
-      } else if (UserInfo.isDark === 0) {
-        document.body.classList.remove('dark-mode');
-        console.log('light');
-      }
+      document.body.classList.toggle('dark-mode', UserInfo.isDark === 1);
+      console.log(UserInfo.isDark === 1 ? 'dark' : 'light');
     }
-  }  
+  }
 };
 
 if (!UserCreds || !UserInfo) {
