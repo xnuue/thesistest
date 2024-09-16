@@ -27,8 +27,10 @@ let check = () => {
     if (UserInfo.isDark !== undefined) {
       if (UserInfo.isDark === 1) {
         document.body.classList.add('dark-mode');
+        console.log('dark');
       } else if (UserInfo.isDark === 0) {
         document.body.classList.remove('dark-mode');
+        console.log('light');
       }
     }
   }
