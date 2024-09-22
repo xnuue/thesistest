@@ -39,7 +39,8 @@ let RegisterUser = evt => {
       await setDoc(ref, {
         name: name.value,
         email: em.value,
-        studentID: sn.value 
+        studentID: sn.value,
+        isDark: "0"
       });
       alert("Account created! Please verify your email before logging in. Check your inbox or spam folder.");
       window.location.href = "index.html"; 

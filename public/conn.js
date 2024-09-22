@@ -23,10 +23,13 @@ let check = () => {
     console.log('User Creds:', UserCreds);
     document.getElementById('name').textContent = UserInfo.name;
     document.getElementById('sn').textContent = UserInfo.sn;
-    console.log('tite');
+
     if (UserInfo.isDark !== undefined) {
-      document.body.classList.toggle('dark-mode', UserInfo.isDark === 1);
-      console.log(UserInfo.isDark === 1 ? 'dark' : 'light');
+      if (UserInfo.isDark === 1) {
+        document.body.classList.add('dark-mode');
+      } else if (UserInfo.isDark === 0) {
+        document.body.classList.remove('dark-mode');
+      }
     }
   }
 };

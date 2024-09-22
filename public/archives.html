@@ -160,13 +160,38 @@
                         <input type="file" id="fileButton" accept=".pdf" />
                       </div>
                       <br>
-                      <div align="center">
-                        <div class="form-group">
-                          <label>Abstract</label>
-                          <textarea class="form-control" rows="3" placeholder="Enter abstract here"
-                            style="height: 180px;"></textarea>
+                      <section class="body">
+                        <div class="row">
+                          <!-- Left column -->
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="forTitle">Title</label>
+                              <input type="text" class="form-control" id="forTitle" placeholder="Enter title">
+                            </div>
+                          </div>
+                          <!-- Right column -->
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="forYear">Year</label>
+                              <input type="text" class="form-control" id="forYear" placeholder="Enter year">
+                            </div>
+                          </div>
+                          <!-- Left column -->
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="forAuthor">Author/s</label>
+                              <input type="text" class="form-control" id="forAuthor" placeholder="Enter author/s">
+                            </div>
+                          </div>
+                          <!-- Right column -->
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="forAbstract">Abstract</label>
+                              <textarea type="text" class="form-control" id="forAbstract" rows="3" placeholder="Enter abstract"></textarea>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      </section>
                     </div>
                   </div>
                 </div>
@@ -174,25 +199,26 @@
             </div>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <script src="conn.js"></script>
-    <script src="upload.js" type="module"></script>
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+  <script src="conn.js"></script>
+  <script src="upload.js" type="module"></script>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 
-    <!-- jQuery -->
-    <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- bs-custom-file-input -->
-    <script src="AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
+  <!-- jQuery -->
+  <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>
