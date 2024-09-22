@@ -4,7 +4,6 @@ import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "h
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCo7nh58UwLmF5w6XPc4erpJgHE2fD1-pE",
     authDomain: "thesissandbox.firebaseapp.com",
@@ -15,23 +14,10 @@ const firebaseConfig = {
     measurementId: "G-DPPCXVN3HD"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 const firestore = getFirestore(app);
 const auth = getAuth(app);
-
-let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
-
-console.log('User Info:', UserInfo);
-console.log('User Creds:', UserCreds);
-
-if (UserInfo && UserInfo.name) {
-    document.getElementById('name').textContent = UserInfo.name;
-} else {
-    console.log('User name not found in session storage.');
-}
 
 const uploader = document.getElementById('uploader');
 const fileButton = document.getElementById('fileButton');
@@ -94,14 +80,4 @@ fileButton.addEventListener('change', function (e) {
             });
         }
     );
-});
-
-signoutButton.addEventListener('click', () => {
-    signOut(auth).then(() => {
-        sessionStorage.removeItem("user-creds");
-        sessionStorage.removeItem("user-info");
-        window.location.href = 'login.html';
-    }).catch((error) => {
-        console.error('Signing out failed:', error);
-    });
 });

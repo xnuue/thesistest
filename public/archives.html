@@ -141,7 +141,7 @@
                     <li class="nav-item">
                       <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
                         href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile"
-                        aria-selected="false">Publish</a>
+                        aria-selected="false">Upload</a>
                     </li>
                   </ul>
                 </div>
@@ -155,10 +155,36 @@
                       aria-labelledby="custom-tabs-one-profile-tab">
                       <!--st-->
                       <div class="mainDiv" align="center">
-                        <p>Firebase Upload Test</p>
-                        <progress id="uploader" value="0" max="100">0%</progress>
-                        <input type="file" id="fileButton" accept=".pdf" />
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">
+                          Upload File
+                        </button>
+                        <center><label>Please upload a file</label></center>
                       </div>
+                      <!--modal-->
+                      <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="uploadModalLabel">Upload Thesis</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <!-- You can add a form for uploading the file here -->
+                              <div class="form-group">
+                                <label for="fileInput">Choose File</label>
+                                <input type="file" class="form-control-file" id="fileInput">
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Upload</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--modal end-->
                       <br>
                       <section class="body">
                         <div class="row">
@@ -187,7 +213,8 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label for="forAbstract">Abstract</label>
-                              <textarea type="text" class="form-control" id="forAbstract" rows="3" placeholder="Enter abstract"></textarea>
+                              <textarea type="text" class="form-control" id="forAbstract" rows="3"
+                                placeholder="Enter abstract"></textarea>
                             </div>
                           </div>
                         </div>
