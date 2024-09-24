@@ -9,28 +9,41 @@ const firebaseConfig = {
     authDomain: "thesissandbox.firebaseapp.com",
     projectId: "thesissandbox",
     storageBucket: "thesissandbox.appspot.com",
-    messagingSenderId: "219383246422",  
+    messagingSenderId: "219383246422",
     appId: "1:219383246422:web:137c8b5cf599e6734dd5f7",
     measurementId: "G-DPPCXVN3HD"
 };
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-const firestore = getFirestore(app);
+const firestore = getFirestore();
 const auth = getAuth(app);
 
 const uploader = document.getElementById('uploader');
-const fileButton = document.getElementById('fileButton');
-const signoutButton = document.getElementById('signout');
-
+const fileInput = document.getElementById('fileInput');
 const titleInput = document.getElementById('forTitle');
 const yearInput = document.getElementById('forYear');
 const authorInput = document.getElementById('forAuthor');
 const abstractInput = document.getElementById('forAbstract');
+const selectedFileLabel = document.getElementById('selectedFileLabel');
 
-fileButton.addEventListener('change', function (e) {
-    const file = e.target.files[0];
-    if (!file) return;
+let selectedFile = null;
+
+document.getElementById('selectFileBtn').addEventListener('click', () => {
+    selectedFile = fileInput.files[0];
+    if (selectedFile) {
+        selectedFileLabel.textContent = `Selected file: ${selectedFile.name}`;
+        $('#uploadModal').modal('hide');
+    } else {
+        alert('Please select a file.');
+    }
+});
+
+document.getElementById('uploadButton').addEventListener('click', () => {
+    if (!selectedFile) {
+        alert('Please select a file first.');
+        return;
+    }
 
     const title = titleInput.value.trim();
     const year = yearInput.value.trim();
@@ -42,8 +55,8 @@ fileButton.addEventListener('change', function (e) {
         return;
     }
 
-    const storageRef = sRef(storage, 'pdf/' + file.name);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const storageRef = sRef(storage, 'pdf/' + selectedFile.name);
+    const uploadTask = uploadBytesResumable(storageRef, selectedFile);
 
     uploadTask.on('state_changed',
         (snapshot) => {
@@ -52,27 +65,22 @@ fileButton.addEventListener('change', function (e) {
         },
         (error) => {
             console.error('Upload failed:', error);
-            console.error('Error code:', error.code);
-            console.error('Error message:', error.message);
         },
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                console.log('File available at', downloadURL);
-
                 const fileMetadata = {
                     title: title,
                     year: year,
                     author: author,
                     abstract: abstract,
-                    name: file.name,
+                    name: selectedFile.name,
                     url: downloadURL,
-                    uploadedBy: UserInfo.name || 'Unknown',
+                    uploadedBy: 'Unknown',
                     timestamp: new Date()
                 };
 
-                const docRef = doc(firestore, 'files', file.name);
+                const docRef = doc(firestore, 'files', selectedFile.name);
                 setDoc(docRef, fileMetadata).then(() => {
-                    console.log('File metadata saved successfully to Firestore.');
                     alert('File and metadata uploaded successfully!');
                 }).catch((error) => {
                     console.error('Error saving file metadata to Firestore:', error);

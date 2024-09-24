@@ -17,12 +17,10 @@
         <p id="name">text</p>
     </div>
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
         import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCo7nh58UwLmF5w6XPc4erpJgHE2fD1-pE",
             authDomain: "thesissandbox.firebaseapp.com",
@@ -33,7 +31,6 @@
             measurementId: "G-DPPCXVN3HD"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const storage = getStorage(app);
         const auth = getAuth(app);
@@ -44,14 +41,12 @@
         console.log('User Info:', UserInfo);
         console.log('User Creds:', UserCreds);
 
-        // Update the HTML element with the user's name
         if (UserInfo && UserInfo.name) {
             document.getElementById('name').textContent = UserInfo.name;
         } else {
             console.log('User name not found in session storage.');
         }
 
-        // Set up event listeners
         const uploader = document.getElementById('uploader');
         const fileButton = document.getElementById('fileButton');
         const signoutButton = document.getElementById('signout');
