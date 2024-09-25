@@ -103,7 +103,7 @@
                 <div class="card-header p-0 pt-1">
                   <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
+                      <a class="nav-link active" id="ta" data-toggle="pill"
                         href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
                         aria-selected="true">Thesis Archives</a>
                     </li>
@@ -118,7 +118,34 @@
                   <div class="tab-content" id="custom-tabs-one-tabContent">
                     <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                       aria-labelledby="custom-tabs-one-home-tab">
-                      <p></p>
+                      <div class="card-body">
+                        <div id="userList_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <table id="archiveList" class="table table-bordered table-hover dataTable dtr-inline"
+                                aria-describedby="archiveList_info">
+                                <thead>
+                                  <tr>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="userList" rowspan="1"
+                                      colspan="1" aria-sort="ascending">Title</th>
+                                    <th class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1">
+                                      Year</th>
+                                    <th class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1">
+                                      Abstract</th>
+                                    <th class="sorting" tabindex="0" aria-controls="userList" rowspan="1" colspan="1">
+                                      View
+                                      Document</th>
+                                  </tr>
+                                  <tr></tr>
+                                </thead>
+                                <tbody>
+                                  <!-- ayoko na mag code sir hahahahaha -->
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
                       aria-labelledby="custom-tabs-one-profile-tab">
@@ -146,42 +173,48 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary" id="selectFileBtn">Select</button>
+                              <button type="button" class="btn btn-primary" id="selectFileBtn"
+                                data-dismiss="modal">Select</button>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <br>
                       <section class="body">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="forTitle">Title</label>
-                              <input type="text" class="form-control" id="forTitle" placeholder="Enter title">
+                        <form id="saveform">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="forTitle">Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Enter title">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="forYear">Year</label>
+                                <input type="text" class="form-control" id="year" placeholder="Enter year">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="forAuthor">Author/s</label>
+                                <input type="text" class="form-control" id="author" placeholder="Enter author/s">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label for="forAbstract">Abstract</label>
+                                <textarea type="text" class="form-control" id="abstract" rows="3"
+                                  placeholder="Enter abstract"></textarea>
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="forYear">Year</label>
-                              <input type="text" class="form-control" id="forYear" placeholder="Enter year">
-                            </div>
+                          <div class="form-group">
+                            <label for="uploader">Upload Progress</label>
+                            <progress id="uploader" value="0" max="100" style="width: 100%;"></progress>
                           </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="forAuthor">Author/s</label>
-                              <input type="text" class="form-control" id="forAuthor" placeholder="Enter author/s">
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="forAbstract">Abstract</label>
-                              <textarea type="text" class="form-control" id="forAbstract" rows="3"
-                                placeholder="Enter abstract"></textarea>
-                            </div>
-                          </div>
-                        </div>
+                          <button type="submit" class="btn btn-primary" id="ulb">Upload File</button>
+                        </form>
                       </section>
-                      <button type="button" class="btn btn-primary" id="uploadButton">Upload File</button>
                     </div>
                   </div>
                 </div>
@@ -195,7 +228,7 @@
   </div>
 
   <script src="conn.js"></script>
-  <script src="upload.js" type="module"></script>
+  <script src="table.js" type="module"></script>
   <aside class="control-sidebar control-sidebar-dark"></aside>
 
   <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>

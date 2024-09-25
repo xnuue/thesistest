@@ -1,0 +1,142 @@
+// Import the necessary Firebase functions
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
+import { getStorage, ref as sRef, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-storage.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCo7nh58UwLmF5w6XPc4erpJgHE2fD1-pE",
+    authDomain: "thesissandbox.firebaseapp.com",
+    projectId: "thesissandbox",
+    storageBucket: "thesissandbox.appspot.com",
+    messagingSenderId: "219383246422",
+    appId: "1:219383246422:web:137c8b5cf599e6734dd5f7",
+    measurementId: "G-DPPCXVN3HD"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+let selectedFile = null;
+
+document.getElementById('selectFileBtn').addEventListener('click', () => {
+    selectedFile = document.getElementById('fileInput').files[0];
+    if (selectedFile) {
+        document.getElementById('selectedFileLabel').textContent = `Selected file: ${selectedFile.name}`;
+    }
+});
+
+async function populateTable() {
+    try {
+        const querySnapshot = await getDocs(collection(db, "Archive"));
+        const tableBody = document.getElementById("archiveList").getElementsByTagName('tbody')[0];
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const title = data.title;
+            const year = data.year;
+            const abstract = data.abstract;
+            const url = data.url;
+
+            const newRow = tableBody.insertRow(tableBody.rows.length);
+            const cell1 = newRow.insertCell(0);
+            const cell2 = newRow.insertCell(1);
+            const cell3 = newRow.insertCell(2);
+            const cell4 = newRow.insertCell(3);
+            cell1.textContent = title;
+            cell2.textContent = year;
+            cell3.textContent = abstract;
+
+            const viewButton = document.createElement('button');
+            viewButton.textContent = "View Document";
+            viewButton.classList.add('btn', 'btn-primary');
+            viewButton.onclick = () => {
+                window.open(url, '_blank');
+            };
+
+            cell4.appendChild(viewButton);
+        });
+    } catch (error) {
+        console.error("Error populating table:", error);
+    }
+}
+
+function clearForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('year').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('abstract').value = '';
+    document.getElementById('fileInput').value = '';
+    document.getElementById('selectedFileLabel').textContent = 'Please select a file';
+}
+
+function saveData() {
+    const title = document.getElementById('title').value;
+    const year = document.getElementById('year').value;
+    const author = document.getElementById('author').value;
+    const abstract = document.getElementById('abstract').value;
+
+    if (!selectedFile) {
+        alert("Please select a file to upload.");
+        return;
+    }
+
+    const storageRef = sRef(storage, 'pdf/' + selectedFile.name);
+    const uploadTask = uploadBytesResumable(storageRef, selectedFile);
+    const uploadButton = document.getElementById('ulb');
+
+    uploadButton.disabled = true;
+
+    uploadTask.on('state_changed',
+        (snapshot) => {
+            const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            document.getElementById('uploader').value = percentage;
+        },
+        (error) => {
+            console.error('Upload failed:', error);
+            uploadButton.disabled = false;
+        },
+        () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                const archive = {
+                    title: title,
+                    year: year,
+                    author: author,
+                    abstract: abstract,
+                    url: downloadURL
+                };
+
+                addDoc(collection(db, "Archive"), archive)
+                    .then((docRef) => {
+                        console.log("Document saved with ID:", docRef.id);
+                        alert("File and data saved successfully!");
+                        populateTable();
+                        clearForm();
+                    })
+                    .catch((error) => {
+                        console.error("Error saving document:", error);
+                    })
+                    .finally(() => {
+                        uploadButton.disabled = false;
+                        document.getElementById('uploader').value = 0;
+                    });
+            });
+        }
+    );
+}
+
+document.getElementById('saveform').addEventListener('submit', (event) => {
+    event.preventDefault();
+    saveData();
+});
+
+document.getElementById("ta").addEventListener("click", () => {
+    const tableBody = document.getElementById("archiveList").getElementsByTagName('tbody')[0];
+    while (tableBody.rows.length > 0) {
+        tableBody.deleteRow(0);
+    }
+    populateTable();
+});
+
+window.onload = populateTable;
