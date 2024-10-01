@@ -103,9 +103,8 @@
                 <div class="card-header p-0 pt-1">
                   <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active" id="ta" data-toggle="pill"
-                        href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
-                        aria-selected="true">Thesis Archives</a>
+                      <a class="nav-link active" id="ta" data-toggle="pill" href="#custom-tabs-one-home" role="tab"
+                        aria-controls="custom-tabs-one-home" aria-selected="true">Thesis Archives</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
@@ -224,9 +223,22 @@
         </div>
       </div>
     </div>
-
   </div>
 
+  <script>
+    $(document).ready(function () {
+      $('#archiveList').DataTable({
+        "paging": true,        // Enable pagination
+        "pageLength": 10,      // Set default records per page
+        "lengthChange": true,  // Allow changing the number of rows displayed
+        "searching": true,     // Add search functionality
+        "ordering": true,      // Enable column sorting
+        "info": true,          // Show table information
+        "autoWidth": false,    // Disable auto width to allow better layout control
+        "responsive": true     // Make the table responsive
+      });
+    });
+  </script>
   <script src="conn.js"></script>
   <script src="table.js" type="module"></script>
   <aside class="control-sidebar control-sidebar-dark"></aside>
@@ -235,6 +247,10 @@
   <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="AdminLTE-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <script src="AdminLTE-3.2.0/dist/js/adminlte.js"></script>
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 </body>
 
 </html>
