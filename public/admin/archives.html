@@ -8,9 +8,9 @@
   <link rel="icon" type="image/x-icon" href="favicon.png">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <link rel="stylesheet" href="AdminLTE-3.2.0/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/dist/css/adminlte.min.css">
 </head>
 
 <body class="sidebar-mini control-sidebar-slide-close dark-mode">
@@ -64,12 +64,6 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="favorites.html" class="nav-link">
-                <i class="nav-icon fas fa-heart"></i>
-                <p>Favorites</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="chatbot.html" class="nav-link">
                 <i class="nav-icon fas fa-comments"></i>
                 <p>Chatbot</p>
@@ -114,16 +108,16 @@
                   </ul>
                 </div>
                 <div class="card-body">
+                  <div id="search" class="dataTables_filter">
+                    <label>Search:
+                      <input type="search" class="form-control form-control-sm" placeholder="Search here"
+                        aria-controls="searchbar">
+                    </label>
+                  </div>
                   <div class="tab-content" id="custom-tabs-one-tabContent">
                     <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
                       aria-labelledby="custom-tabs-one-home-tab">
                       <div class="card-body">
-                        <div id="search" class="dataTables_filter">
-                          <label>Search:
-                            <input type="search" class="form-control form-control-sm" placeholder="Search here"
-                              aria-controls="searchbar">
-                          </label>
-                        </div>
                         <div id="userList_wrapper" class="dataTables_wrapper dt-bootstrap4 dark-mode">
                           <div class="row">
                             <div class="col-sm-12">
@@ -230,10 +224,10 @@
       </div>
     </div>
   </div>
-  <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
-  <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="AdminLTE-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-  <script src="AdminLTE-3.2.0/dist/js/adminlte.js"></script>
+  <script src="../AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+  <script src="../AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../AdminLTE-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="../AdminLTE-3.2.0/dist/js/adminlte.js"></script>
   <!-- DataTables CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
   <!-- DataTables JS -->
@@ -243,15 +237,22 @@
 
   <script>
     $(document).ready(function () {
-      var table = $('#archiveList').DataTable();
+      // Initialize the DataTable
+      var table = $('#archiveList').DataTable({
+        searching: true, // Ensure searching is enabled
+        paging: true,    // Optional: Add pagination for better data handling
+        info: false,     // Optional: Disable table info
+      });
 
       console.log('DataTable initialized:', table);
 
-      $('#search input').on('keyup', function () {
-        table.search(this.value).draw();
+      // Search function connected to the search input
+      $('#searchbar').on('keyup', function () {
+        table.search($(this).val()).draw(); // Apply the search on DataTable
       });
     });
   </script>
+
 
   <aside class="control-sidebar control-sidebar-dark"></aside>
 </body>

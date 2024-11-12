@@ -10,14 +10,14 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="AdminLTE-3.2.0/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/dist/css/adminlte.min.css">
 </head>
 
-<body class="sidebar-mini control-sidebar-slide-close dark-mode ">
+<body class="sidebar-mini control-sidebar-slide-close">
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
@@ -27,7 +27,6 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
       </ul>
-
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
@@ -45,31 +44,6 @@
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" type="button" data-toggle="modal" data-target="#modal-profile">
-              Edit account info
-            </a>
-            <div class="modal fade" id="modal-profile" aria-hidden="true" style="display: none;">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Default Modal</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>One fine body…</p>
-                  </div>
-                  <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-                <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-            </div>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item" type="submit" role="button" id="signout">Logout</a>
             <div class="dropdown-divider"></div>
           </div>
@@ -79,10 +53,8 @@
       </ul>
     </nav>
     <!-- /.navbar -->
-
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
       <a href="#" class="brand-link">
         <span class="brand-text font-weight-light"><b>TCU UniArch</b></span>
       </a>
@@ -90,11 +62,9 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
             <li class="nav-header">Home </li>
             <li class="nav-item">
-              <a href="#" class="nav-link active">
+              <a href="dashboard.html" class="nav-link">
                 <i class="nav-icon fas fa-house-user"></i>
                 <p>
                   Dashboard
@@ -103,18 +73,10 @@
             </li>
             <li class="nav-header">Thesis </li>
             <li class="nav-item">
-              <a href="archives.html" class="nav-link">
+              <a href="archives.html" class="nav-link active">
                 <i class="nav-icon fa fa-book"></i>
                 <p>
                   Archives
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="favorites.html" class="nav-link">
-                <i class="nav-icon fas fa-heart"></i>
-                <p>
-                  Favorites
                 </p>
               </a>
             </li>
@@ -139,54 +101,24 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
+              <button type="button" class="btn btn-primary" id="return">Return</button>
             </div>
-            <!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="dashboard.html">Home</a></li>
-                <li class="breadcrumb-item active">Main</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-          <div class="card card-primary">
-            <div class="card-header">
-              <h1 class="card-title" id="name">(name placeholder)</h1>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form>
-              <div class="card-body">
-                <h4 id="sn">(student number placeholder)</h4>
-              </div>
-              <!-- /.card-body -->
-            </form>
-          </div>
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Recommended for You</h3>
-            </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form>
-              <div class="card-body">
-                <h2 align="center"></h2>
-              </div>
-              <!-- /.card-body -->
-            </form>
-          </div>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        <section class="body">
           <section class="body">
             <div class="row">
               <!-- Left column -->
               <div class="col-md-6">
                 <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">News</h3>
+                    <h3 class="card-title">Title</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form>
                     <div class="card-body">
-                      <h2 align="center"></h2>
+                      <h2 align="center" id="title">(title placeholder)</h2>
                     </div>
                     <!-- /.card-body -->
                   </form>
@@ -196,13 +128,13 @@
               <div class="col-md-6">
                 <div class="card card-primary">
                   <div class="card-header">
-                    <h3 class="card-title">Recents</h3>
+                    <h3 class="card-title">Author/s</h3>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form>
                     <div class="card-body">
-                      <h2 align="center"></h2>
+                      <h2 align="center" id="authors">(author placeholder)</h2>
                     </div>
                     <!-- /.card-body -->
                   </form>
@@ -210,27 +142,88 @@
               </div>
             </div>
           </section>
-        </div>
-        </form>
-      </div><!-- /.container-fluid -->
+          <section class="body">
+            <div class="row">
+              <!-- Left column -->
+              <div class="col-md-6">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Year</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <!-- form start -->
+                  <form>
+                    <div class="card-body">
+                      <h2 align="center" id="year">(year placeholder)</h2>
+                    </div>
+                    <!-- /.card-body -->
+                  </form>
+                </div>
+              </div>
+              <!-- Right column -->
+              <div class="col-md-6">
+                <div class="card card-primary">
+                  <div class="card-header">
+                    <h3 class="card-title">Abstract</h3>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body">
+                    <p id="abstract" style="font-size: 15px; text-align: justify;">(abstract placeholder)</p>
+                  </div>
+                  <!-- /.card-body -->
+                </div>
+              </div>
+            </div>
+            <center><button type="button" class="btn btn-primary" id="viewDocBtn">View Document</button></center>
+          </section>
+        </section>
+      </div>
     </div>
-    <!-- /.content-header -->
-    <script src="conn.js"></script>
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-    <!-- jQuery -->
-    <script src="AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- bs-custom-file-input -->
-    <script src="AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
-    <script src="AdminLTE-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  </div>
+  <script src="conn.js"></script>
+  <script>
+    document.getElementById('return').addEventListener('click', function () {
+      window.location.href = 'archives.html';
+    });
 
+    window.onload = function () {
+      const documentData = JSON.parse(sessionStorage.getItem('documentData'));
+
+      if (documentData) {
+        document.getElementById('title').textContent = documentData.title;
+        document.getElementById('authors').textContent = documentData.author;
+        document.getElementById('year').textContent = documentData.year;
+        document.getElementById('abstract').textContent = documentData.abstract;
+        console.log('Document Data:', documentData);
+      } else {
+        console.error('No document data found in sessionStorage.');
+      }
+    }
+
+    document.getElementById('viewDocBtn').addEventListener('click', function () {
+      const documentData = JSON.parse(sessionStorage.getItem('documentData'));
+
+      if (documentData && documentData.url) {
+        window.open(documentData.url, '_blank');  
+      } else {
+        alert("No document URL found!");
+      }
+    });
+
+  </script>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- jQuery -->
+  <script src="../AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../AdminLTE-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- bs-custom-file-input -->
+  <script src="../AdminLTE-3.2.0/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../AdminLTE-3.2.0/dist/js/adminlte.min.js"></script>
 </body>
 
 </html>

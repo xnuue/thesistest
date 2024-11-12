@@ -93,7 +93,7 @@ function saveData() {
 
     const storageRef = sRef(storage, 'pdf/' + selectedFile.name);
     const uploadTask = uploadBytesResumable(storageRef, selectedFile);
-    const uploadButton = document.getElementById('ulb');
+    const uploadButton = document.getElementById('ulb'); 
 
     uploadButton.disabled = true;
 
@@ -109,7 +109,7 @@ function saveData() {
         () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 const archive = {
-                    title: title,
+                    title: title, 
                     year: year,
                     author: author,
                     abstract: abstract,

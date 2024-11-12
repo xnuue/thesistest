@@ -27,10 +27,12 @@ let pass = document.getElementById('pw');
 let em = document.getElementById('email');
 let sn = document.getElementById('studentnum'); 
 let MainForm = document.getElementById('reg');
+let currentTime = new Date(); 
+
+var year = currentTime.getFullYear();
 
 let RegisterUser = evt => {
   evt.preventDefault();
-
   createUserWithEmailAndPassword(auth, em.value, pass.value)
     .then(async (credentials) => {
       await sendEmailVerification(auth.currentUser); 
@@ -40,7 +42,8 @@ let RegisterUser = evt => {
         name: name.value,
         email: em.value,
         studentID: sn.value,
-        isDark: "0"
+        isDark: "0",
+        year: year
       });
       alert("Account created! Please verify your email before logging in. Check your inbox or spam folder.");
       window.location.href = "index.html"; 

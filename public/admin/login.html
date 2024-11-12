@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login | TCU Thesis Management System</title>
-  <link rel="icon" type="image/x-icon" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="../favicon.png">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="AdminLTE-3.2.0/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../AdminLTE-3.2.0/dist/css/adminlte.min.css">
 
 </head>
 
@@ -22,7 +22,7 @@
   <div class="login-box">
     <div class="page-icon">
       <center>
-        <img src="icon.png" style="width:50%;max-width:400px">
+        <img src="../icon.png" style="width:50%;max-width:400px">
       </center>
     </div>
     <div class="login-logo">
@@ -34,7 +34,7 @@
         <p class="login-box-msg">Please sign in</p>
         <form id="form" method="post">
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Student ID Number" id="studentnum">
+            <input type="text" class="form-control" placeholder="Admin Username" id="studentnum">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-hashtag"></span>
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password" id="pw">
+            <input type="password" class="form-control" placeholder="Admin Password" id="pw">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -67,15 +67,14 @@
       <center>
         <div class="social-auth-links text-center mt-2 mb-3 col-7">
           <p id="test">or</p>
-          <a href="register.html" class="btn btn-block btn-primary">
-            <i class="fas fa-plus mr-2"></i> Create an account
+          <a href="../index.html" class="btn btn-block btn-primary">
+            <i class="fas fa-long-arrow-alt-left"></i> Return
           </a>
         </div>
         <!-- /.login-card-body -->
     </div>
     <br>
     <center><a href="forgot-pass.html" class="text-left">I forgot my password</a></center>
-    <center><a href="admin/login.html" class="text-left">Login as Admin</a></center>
   </div>
 
   <!-- /.login-box -->
@@ -95,15 +94,9 @@
 
   </script>
   <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
-    import { getFirestore, collection, query, where, getDocs, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
       apiKey: "AIzaSyCo7nh58UwLmF5w6XPc4erpJgHE2fD1-pE",
       authDomain: "thesissandbox.firebaseapp.com",
@@ -113,60 +106,39 @@
       appId: "1:219383246422:web:137c8b5cf599e6734dd5f7",
       measurementId: "G-DPPCXVN3HD"
     };
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore();
-    const auth = getAuth(app);
 
-    let name = document.getElementById('fname');
-    let pass = document.getElementById('pw');
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
     let studentID = document.getElementById('studentnum');
+    let pass = document.getElementById('pw');
     let MainForm = document.getElementById('form');
 
     let SignInUser = async (evt) => {
       evt.preventDefault();
 
       try {
-        console.log("Student ID entered:", studentID.value);
-
-        const querySnapshot = await getDocs(query(collection(db, "UserAuthList"), where("studentID", "==", studentID.value)));
+        const adminQuery = query(collection(db, "AdminAcc"), where("usn", "==", studentID.value), where("pw", "==", pass.value));
+        const querySnapshot = await getDocs(adminQuery);
 
         if (!querySnapshot.empty) {
-          const userDoc = querySnapshot.docs[0];
-          const email = userDoc.data().email;
+          sessionStorage.setItem('ssAdmin', JSON.stringify({
+            acc: studentID.value
+          }));
+          window.location.href = "dashboard.html";
 
-          console.log("Email associated with Student ID:", email);
-
-          const credentials = await signInWithEmailAndPassword(auth, email, pass.value);
-
-          const ref = doc(db, "UserAuthList", credentials.user.uid);
-          const docSnap = await getDoc(ref);
-
-          if (docSnap.exists()) {
-            sessionStorage.setItem("user-info", JSON.stringify({
-              name: docSnap.data().name,
-              sn: docSnap.data().studentID,
-              isDark: docSnap.data().isDark,
-            }));
-            sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-            window.location.href = "dashboard.html";
-          }
         } else {
-          alert("Student ID not found!");
-          console.log("Student ID not found in the database.");
+          alert("Invalid Username or Password!");
         }
       } catch (error) {
-        alert("Wrong Student ID or Password!");
-        console.log("Error code:", error.code || 'Not available');
-        console.log("Error message:", error.message || 'Not available');
-        pass.value = "";
-        studentID.value = "";
+        console.error("Login Error: ", error);
+        alert("An error occurred during login. Please try again.");
       }
     }
 
     MainForm.addEventListener('submit', SignInUser);
-
   </script>
+
 </body>
 
 </html>
