@@ -132,7 +132,37 @@
                         <!-- form start -->
                         <form>
                             <div class="card-body">
-                                <h4></h4>
+                                <div id="userList_wrapper" class="dataTables_wrapper dt-bootstrap4 dark-mode">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table id="archiveList"
+                                                class="table table-bordered table-hover dataTable dtr-inline"
+                                                aria-describedby="archiveList_info">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="sorting sorting_asc" tabindex="0"
+                                                            aria-controls="userList" rowspan="1" colspan="1"
+                                                            aria-sort="ascending">Title</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="userList"
+                                                            rowspan="1" colspan="1">
+                                                            Year</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="userList"
+                                                            rowspan="1" colspan="1">
+                                                            Author</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="userList"
+                                                            rowspan="1" colspan="1">
+                                                            View
+                                                            Document</th>
+                                                    </tr>
+                                                    <tr></tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- ayoko na mag code sir hahahahaha -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.card-body -->
                         </form>
@@ -142,9 +172,6 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-        <script>
-            document.querySelector('.card-body').innerHTML = '<p>No favorites yet.</p>';
-        </script>
         <script src="conn.js"></script>
         <script src="fav.js"></script>
         <!-- Control Sidebar -->
