@@ -36,6 +36,7 @@ async function populateTable() {
             const data = doc.data();
             const title = data.title;
             const year = data.year;
+            const docId = doc.id;
             const abstract = data.abstract;
             const author = data.author;
             const url = data.url;
@@ -45,6 +46,7 @@ async function populateTable() {
             const cell2 = newRow.insertCell(1);
             const cell3 = newRow.insertCell(2);
             const cell4 = newRow.insertCell(3);
+            const cell5 = newRow.insertCell(4); // New cell for the Favorite button
 
             cell1.textContent = title;
             cell2.textContent = year;
@@ -59,17 +61,61 @@ async function populateTable() {
                     year: year,
                     abstract: abstract,
                     author: author,
-                    url: url
+                    url: url,
+                    docId: docId
                 }));
                 window.location.href = 'document.html';
             };
 
+            const favoriteButton = document.createElement('button');
+            favoriteButton.textContent = "Add to Favorites";
+            favoriteButton.classList.add('btn', 'btn-warning');
+            favoriteButton.onclick = async () => {
+                const userId = JSON.parse(sessionStorage.getItem("user")).id; // Assumes user ID is in session storage
+                await toggleFavorite(userId, docId, favoriteButton);
+            };
+
             cell4.appendChild(viewButton);
+            cell5.appendChild(favoriteButton);
         });
     } catch (error) {
         console.error("Error populating table:", error);
     }
 }
+
+async function toggleFavorite(userId, docId, button) {
+    try {
+        const userRef = doc(db, "users", userId);
+        const userSnap = await getDoc(userRef);
+
+        if (!userSnap.exists()) {
+            console.error("User document not found!");
+            return;
+        }
+
+        const userData = userSnap.data();
+        const favorites = userData.favorites || [];
+
+        if (favorites.includes(docId)) {
+            // If already in favorites, remove it
+            const updatedFavorites = favorites.filter(fav => fav !== docId);
+            await updateDoc(userRef, { favorites: updatedFavorites });
+            button.textContent = "Add to Favorites";
+            button.classList.remove('btn-danger');
+            button.classList.add('btn-warning');
+        } else {
+            // If not in favorites, add it
+            favorites.push(docId);
+            await updateDoc(userRef, { favorites: favorites });
+            button.textContent = "Remove from Favorites";
+            button.classList.remove('btn-warning');
+            button.classList.add('btn-danger');
+        }
+    } catch (error) {
+        console.error("Error updating favorites:", error);
+    }
+}
+
 
 function clearForm() {
     document.getElementById('title').value = '';
